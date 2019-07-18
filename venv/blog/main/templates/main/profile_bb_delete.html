@@ -1,0 +1,18 @@
+{% extends 'layout/basic.html' %}
+
+{% load bootstrap4 %}
+
+
+{% block title %}Добавление объявления{% endblock %}
+
+{% block content %}
+
+<h2>Добавление объявления</h2>
+<form method="post" enctype="multipart/form-data">
+
+    <h3>{{ bb.title }}</h3>
+
+
+    <p><button type="submit" class="btn btn-primary">Удалить</button></p>
+</form>
+{% endblock %}

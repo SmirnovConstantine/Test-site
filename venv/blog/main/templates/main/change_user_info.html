@@ -1,0 +1,16 @@
+{% extends "layout/basic.html" %}
+
+{% block title %}Правка илчных данных{% endblock %}
+
+{% block content %}
+<h2>Правка личных данных пользователя {{ user.username }}</h2>
+<form method="post">
+    {% csrf_token %}
+    <p >UserName {{ form.username }}</p>
+    <p>Email {{ form.email }}</p>
+    <p>Имя {{ form.first_name }}</p>
+    <p>Фамилия {{ form.last_name }}</p>
+    <p>Отправлять сообщения? {{ form.send_messages }}</p>
+    <button type="submit" class="btn btn-primary">Сохранить</button>
+</form>
+{% endblock %}

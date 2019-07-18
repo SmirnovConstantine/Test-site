@@ -1,0 +1,39 @@
+{% extends 'layout/basic.html' %}
+
+{% block title%}{{ bbs.title }}-{{ bbs.rubric.name }}{% endblock %}
+
+
+{% block content %}
+<div class="cotainer-fluid mt-3">
+    {% for bbs in bbs %}
+    <div class="row">
+        {% if bb.image %}
+        <div class="col-md-auto"><img src="{{ bb.image.url }}" class="main-image"></div>
+        {% endif %}
+        <div class="col">
+            <h2>{{ bbs.title }}</h2>
+            <p>{{ bbs.content }}</p>
+            <p class="font-weight-bold">{{ bbs.price }}</p>
+            <p>{{ bbs.contacts }}</p>
+            <p class="text-right font-italic">Объявление добавлено {{ bbs.created_at }}</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% if ais %}
+<div class="d-flex justify-content-between flex-wrap mt-5">
+    {% for ai in ais %}
+    <div>
+        <img class="additiona-image" src="{{ ai.image.url }}">
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+<p><a href="{% url 'main:by_rubric' pk=bb.pk %}{{ all }}">Назад</a></p>
+<a href="{% url 'main:profile_bb_change' pk=bb.pk %}"><button type = "submit" class="btn btn-outline-primary">Изменить объявления</button></a>
+<a href="{% url 'main:profile_bb_delete' pk=bb.pk %}"><button type = "submit" class="btn btn-outline-primary">Удалить объявления</button></a>
+
+{% endblock %}
+
+
+
